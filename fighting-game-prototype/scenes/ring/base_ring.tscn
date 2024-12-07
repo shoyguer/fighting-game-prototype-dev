@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2f1oiq4ce6ah"]
+
+[ext_resource type="Script" path="res://scenes/ring/base_ring.gd" id="1_penw6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwomd"]
+size = Vector2(10, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdpws"]
+albedo_color = Color(0.117677, 0.238708, 0.113718, 1)
+
+[node name="BaseRing" type="Node3D"]
+script = ExtResource("1_penw6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mwomd")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdpws")
