@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddwiy1mimsn0a"]
+
+[ext_resource type="Script" path="res://entities/character/base_character.gd" id="1_l846b"]
+[ext_resource type="Script" path="res://components/move_component/move_component.gd" id="2_vis4b"]
+[ext_resource type="Script" path="res://components/state_machine/state_manager.gd" id="3_gpgus"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d6jiq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qdde2"]
+
+[node name="BaseCharacter" type="CharacterBody3D"]
+script = ExtResource("1_l846b")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_d6jiq")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qdde2")
+
+[node name="MoveComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vis4b")
+
+[node name="StateManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_gpgus")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2f1oiq4ce6ah"]
+[gd_scene load_steps=5 format=3 uid="uid://2f1oiq4ce6ah"]
 
 [ext_resource type="Script" path="res://scenes/ring/base_ring.gd" id="1_penw6"]
+[ext_resource type="PackedScene" uid="uid://ddwiy1mimsn0a" path="res://entities/character/base_character.tscn" id="2_81ipt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mwomd"]
 size = Vector2(10, 5)
@@ -18,3 +19,5 @@ visible = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_mwomd")
 surface_material_override/0 = SubResource("StandardMaterial3D_sdpws")
+
+[node name="BaseCharacter" parent="." instance=ExtResource("2_81ipt")]
