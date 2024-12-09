@@ -7,36 +7,50 @@ extends BaseState
 
 var acceleration = 50
 
-var sprint_max_time: float = 5
+var sprint_max_time: float = 0.33
 var sprint_cur_time: float = 0.0
 var sprint_wait_time: bool = false
 
 var sprint_key: int = 0
 
-func enter() -> void:
-	print("entrou walk")
-	super()
-	#animation_tree.animation_travel("Walk")
 
-func input(_event: InputEvent) -> BaseState:
-	sprint_key = move_component.get_movement_released()
+func enter() -> void:
+	sprint_wait_time = false
+	sprint_cur_time = 0.0
+	sprint_key = 0
+	super()
+
+
+func input(event: InputEvent) -> BaseState:
+	if (sprint_wait_time == false):
+		sprint_key = move_component.get_movement_released()
+	
 	if sprint_key != 0:
 		sprint_wait_time = true
-	if move_component.get_movement_direction() != 0 and sprint_wait_time == true:
+	if (move_component.get_movement_direction() != 0) and (sprint_wait_time == true):
 		sprint_wait_time = false
-	#if Input.is_action_pressed("move_sprint"):
-	#	return sprint_state
+
+	if (sprint_key != 0) and (sprint_key == move_component.get_movement_pressed()):
+		return sprint_state
+	
+	elif (sprint_key != 0) and (move_component.get_movement_pressed() != 0) and (
+		sprint_key != move_component.get_movement_pressed()):
+		sprint_key = 0
+		sprint_wait_time = false
+		sprint_cur_time = 0
+	
 	return null
 
+
 func physics_process(delta: float) -> BaseState:
-	print("walking")
-	
 	if sprint_cur_time >= sprint_max_time:
 		sprint_wait_time = false
+		sprint_key = 0
+		sprint_cur_time = 0
+	
 	if sprint_wait_time == true:
 		sprint_cur_time += delta
-		if sprint_key == get_movement_direction():
-			return sprint_state
+	
 	if wants_jump() and context.is_on_floor():
 		return jump_state
 	
@@ -49,10 +63,7 @@ func physics_process(delta: float) -> BaseState:
 	
 	context.move_and_slide()
 	
-	if movement == 0 and sprint_wait_time == false:
+	if (movement == 0) and (sprint_wait_time == false):
 		return idle_state
-	
-	#elif (context.velocity.x != 0) and (context.velocity.y == 0):
-	#	animation_tree.animation_blend_all(movement)
 	
 	return null

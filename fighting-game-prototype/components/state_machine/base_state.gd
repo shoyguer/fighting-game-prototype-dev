@@ -13,7 +13,6 @@ func _ready():
 
 
 func init(_context):
-	
 	context = _context
 	move_component = context.move_component
 	#animation_tree = context.animation_tree

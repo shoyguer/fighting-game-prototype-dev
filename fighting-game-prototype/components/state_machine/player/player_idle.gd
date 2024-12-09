@@ -6,7 +6,6 @@ extends BaseState
 
 
 func enter() -> void:
-	print("entered idle")
 	super()
 	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0

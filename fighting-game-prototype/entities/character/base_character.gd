@@ -21,8 +21,8 @@ enum Direction {
 	get:
 		return direction
 
-var move_speed: float = 10
-var sprint_speed: float = 4.2
+var move_speed: float = 5
+var sprint_speed: float = 10
 var crouch_speed: float = 2
 var jump_velocity: float = 10
 # Is it a real player or is it being controlled by AI?

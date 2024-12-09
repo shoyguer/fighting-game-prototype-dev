@@ -5,14 +5,14 @@ extends BaseState
 @export var jump_state: BaseState
 @export var walk_state: BaseState
 
+var acceleration = 50
+
+
 func enter() -> void:
-	print("entrou sprint")
 	super()
-	#animation_tree.animation_travel("Walk")
 
 
 func physics_process(delta: float) -> BaseState:
-	print("sprinting")
 	if wants_jump() and context.is_on_floor():
 		return jump_state
 	
@@ -21,7 +21,7 @@ func physics_process(delta: float) -> BaseState:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var movement: float = get_movement_direction() * context.sprint_speed
-	context.velocity.x = context.sprint_speed * movement
+	context.velocity.x = move_toward(context.velocity.x, movement, acceleration * delta)
 	
 	context.move_and_slide()
 	
