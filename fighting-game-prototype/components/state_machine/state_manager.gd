@@ -5,6 +5,7 @@ extends Node
 @export var starting_state: BaseState
 
 var current_state: BaseState
+var states: Dictionary = {}
 
 
 func init(context: BaseCharacter) -> void:

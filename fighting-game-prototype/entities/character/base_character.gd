@@ -6,7 +6,11 @@ extends CharacterBody3D
 enum Direction {
 	LEFT = -1, RIGHT = 1
 }
-
+@export var jump_state: BaseState
+@export var idle_state: BaseState
+@export var crouch_state: BaseState
+@export var walk_state: BaseState
+@export var sprint_state: BaseState
 @export var starting_state: BaseState
 @export var direction: Direction = Direction.RIGHT:
 	set(value):
@@ -17,8 +21,10 @@ enum Direction {
 	get:
 		return direction
 
-var move_speed: float = 0
-var jump_velocity: float = 0
+var move_speed: float = 10
+var sprint_speed: float = 4.2
+var crouch_speed: float = 2
+var jump_velocity: float = 10
 # Is it a real player or is it being controlled by AI?
 var is_player: bool = false
 
@@ -41,3 +47,8 @@ func _physics_process(delta: float) -> void:
 	# If not in editor, state manager will play
 	if not Engine.is_editor_hint():
 		state_manager.physics_process(delta)
+
+
+func _input(event: InputEvent) -> void:
+	if not Engine.is_editor_hint():
+		state_manager.input(event)

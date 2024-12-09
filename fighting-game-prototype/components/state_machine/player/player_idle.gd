@@ -1,13 +1,14 @@
 extends BaseState
 
-@export var fall_state: BaseState
-@export var jump_state: BaseState
 @export var walk_state: BaseState
+@export var jump_state: BaseState
+@export var crouch_state: BaseState
 
 
 func enter() -> void:
+	print("entered idle")
 	super()
-	animation_tree.animation_travel("Idle")
+	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0
 
 
@@ -16,13 +17,16 @@ func input(_event: InputEvent) -> BaseState:
 		return jump_state
 	if get_movement_direction() != 0.0:
 		return walk_state
+	if Input.is_action_pressed("move_crouch"):
+		return crouch_state
 	return null
 
 
 func physics_process(delta: float) -> BaseState:
-	context.velocity.y += gravity * delta
+	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	if !context.is_on_floor():
-		return fall_state
+	
+	#if !context.is_on_floor():
+	#	return fall_state
 	return null
