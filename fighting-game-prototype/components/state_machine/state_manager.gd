@@ -5,6 +5,7 @@ extends Node
 @export var starting_state: BaseState
 
 var current_state: BaseState
+var states: Dictionary = {}
 
 
 func init(context: BaseCharacter) -> void:
@@ -17,6 +18,7 @@ func init(context: BaseCharacter) -> void:
 
 
 func change_state(new_state: BaseState) -> void:
+	print(new_state.name)
 	if current_state:
 		current_state.exit()
 	current_state = new_state

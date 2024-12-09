@@ -5,7 +5,7 @@ extends Node
 var animation_tree: AnimationStateMachine
 var move_component: MoveComponent
 var context: BaseCharacter
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 func init(_context):
 	context = _context
 	move_component = context.move_component
-	animation_tree = context.animation_tree
+	#animation_tree = context.animation_tree
 	
 	# Gets all needed states from the Context
 	var this_script: GDScript = get_script()
