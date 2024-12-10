@@ -7,7 +7,7 @@ extends BaseState
 
 var acceleration = 50
 
-var sprint_max_time: float = 0.33
+var sprint_max_time: float = 0.2
 var sprint_cur_time: float = 0.0
 var sprint_wait_time: bool = false
 

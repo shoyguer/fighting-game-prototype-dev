@@ -3,23 +3,31 @@ extends CharacterBody3D
 
 
 ## For setting the current direction of the character
-enum Direction {
-	LEFT = -1, RIGHT = 1
-}
+@export_group("Character")
+@export var max_health_points: int = 100
+@export var cur_health_points: int = 100:
+	set(value):
+		cur_health_points = value
+		cur_health_points = clampi(cur_health_points, 0, max_health_points)
+	get:
+		return cur_health_points
+@export var direction: Direction = Direction.RIGHT:
+	set(value):
+		direction = value
+	get:
+		return direction
+
+@export_group("States")
 @export var jump_state: BaseState
 @export var idle_state: BaseState
 @export var crouch_state: BaseState
 @export var walk_state: BaseState
 @export var sprint_state: BaseState
 @export var starting_state: BaseState
-@export var direction: Direction = Direction.RIGHT:
-	set(value):
-		direction = value
-		
-		#if animation_tree is AnimationStateMachine:
-			#animation_tree.animation_blend_all(direction)
-	get:
-		return direction
+
+enum Direction {
+	LEFT = -1, RIGHT = 1
+}
 
 var move_speed: float = 5
 var sprint_speed: float = 10
