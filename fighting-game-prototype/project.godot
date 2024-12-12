@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Fighting Game Prototype"
-run/main_scene="res://scenes/ring/base_ring.tscn"
+run/main_scene="res://ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneLoader="*res://ui/scene_loader/scene_loader.tscn"
+Global="*res://autoload/global.gd"
 
 [input]
 
