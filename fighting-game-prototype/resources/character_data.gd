@@ -1,4 +1,4 @@
-class_name CharacterResource
+class_name CharacterData
 extends Resource
 
 @export var max_health: int = 1000

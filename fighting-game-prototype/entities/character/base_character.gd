@@ -5,7 +5,7 @@ signal health_changes
 
 ## For setting the current direction of the character
 @export_group("Character")
-@export var character_data: CharacterResource
+@export var character_data: CharacterData
 @export var max_health_points: int = 1000
 @export var cur_health_points: int = 1000:
 	set(value):
@@ -18,6 +18,7 @@ signal health_changes
 		direction = value
 	get:
 		return direction
+@export var health_bar: TextureProgressBar
 
 @export_group("States")
 @export var jump_state: BaseState
