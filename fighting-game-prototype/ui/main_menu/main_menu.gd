@@ -21,7 +21,6 @@ var current_container: VBoxContainer
 @onready var game_version_label: Label = %GameVersionLabel
 
 
-
 func _ready() -> void:
 	main_menu.modulate.a = 0
 	current_container = pre_menu
