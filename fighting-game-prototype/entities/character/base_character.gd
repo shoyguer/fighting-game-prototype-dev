@@ -59,7 +59,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	pass
+	if not Engine.is_editor_hint():
+		state_manager.physics_process(delta)
 	
 	
 
