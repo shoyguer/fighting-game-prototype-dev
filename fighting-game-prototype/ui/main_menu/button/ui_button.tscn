@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckuhsxkta1i1s"]
+
+[ext_resource type="Script" path="res://ui/main_menu/button/ui_button.gd" id="1_0icm5"]
+
+[node name="Button" type="Button"]
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Button"
+script = ExtResource("1_0icm5")
+
+[connection signal="pressed" from="." to="." method="_button_pressed"]
