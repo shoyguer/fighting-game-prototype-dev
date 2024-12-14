@@ -59,14 +59,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#character_data.current_health -= damage_suffered
-	if Input.is_action_just_pressed("more_health"):
-		character_data.current_health += 100
-	if Input.is_action_just_pressed("less_health"):
-		character_data.current_health -= 100
-	# If not in editor, state manager will play
-	if not Engine.is_editor_hint():
-		state_manager.physics_process(delta)
+	pass
 	
 	
 
