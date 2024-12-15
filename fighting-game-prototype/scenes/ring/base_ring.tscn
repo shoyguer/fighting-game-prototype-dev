@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2f1oiq4ce6ah"]
+[gd_scene load_steps=16 format=3 uid="uid://2f1oiq4ce6ah"]
 
 [ext_resource type="Script" path="res://scenes/ring/base_ring.gd" id="1_penw6"]
 [ext_resource type="PackedScene" uid="uid://ddwiy1mimsn0a" path="res://entities/character/base_character.tscn" id="2_81ipt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bb0otjgigu1cw" path="res://ui/hud_control/health_bar/health_background.svg" id="6_c7t6p"]
 [ext_resource type="Texture2D" uid="uid://boytioa66vyk6" path="res://ui/hud_control/portrait/placeholder.png" id="6_umaam"]
 [ext_resource type="Texture2D" uid="uid://j6opa33mtudy" path="res://ui/hud_control/health_bar/health_fill.svg" id="7_fcmyi"]
+[ext_resource type="PackedScene" uid="uid://x41nwyiwuiu7" path="res://ui/in-game_menu/pause_menu.tscn" id="9_iqah3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lj7xn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -165,3 +166,6 @@ offset_top = 50.0
 offset_right = 449.0
 offset_bottom = 73.0
 text = "Enemy"
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_iqah3")]
+visible = false
