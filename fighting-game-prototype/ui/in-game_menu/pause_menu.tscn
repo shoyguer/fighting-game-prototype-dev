@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://x41nwyiwuiu7"]
 
 [ext_resource type="Script" path="res://ui/in-game_menu/pause_menu.gd" id="1_rgi5y"]
-[ext_resource type="Script" path="res://ui/main_menu/button/ui_button.gd" id="2_45n0k"]
+[ext_resource type="PackedScene" uid="uid://ckuhsxkta1i1s" path="res://ui/main_menu/button/ui_button.tscn" id="2_u14kf"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -26,18 +26,26 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Resume" parent="MarginContainer/Buttons" instance=ExtResource("2_u14kf")]
 layout_mode = 2
 text = "Resume"
-script = ExtResource("2_45n0k")
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" parent="MarginContainer/Buttons" instance=ExtResource("2_u14kf")]
+layout_mode = 2
+text = "Settings"
+button_type = 3
+
+[node name="QuitMenu" parent="MarginContainer/Buttons" instance=ExtResource("2_u14kf")]
+layout_mode = 2
+text = "Quit Menu"
+button_type = 5
+scene_path_to_load = "res://ui/main_menu/main_menu.tscn"
+
+[node name="Quit" parent="MarginContainer/Buttons" instance=ExtResource("2_u14kf")]
 layout_mode = 2
 text = "Quit"
-script = ExtResource("2_45n0k")
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+button_type = 6
