@@ -30,6 +30,8 @@ signal health_changes
 @export var crouch_state: BaseState
 @export var walk_state: BaseState
 @export var sprint_state: BaseState
+@export var punch_state: BaseState
+@export var kick_state: BaseState
 @export var starting_state: BaseState
 
 enum Direction {
@@ -43,6 +45,7 @@ var jump_velocity: float = 10
 # Is it a real player or is it being controlled by AI?
 var is_player: bool = false
 
+var is_punching: bool = false
 
 
 @onready var mesh: MeshInstance3D = %Mesh

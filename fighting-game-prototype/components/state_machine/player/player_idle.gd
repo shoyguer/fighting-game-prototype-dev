@@ -3,7 +3,8 @@ extends BaseState
 @export var walk_state: BaseState
 @export var jump_state: BaseState
 @export var crouch_state: BaseState
-
+@export var punch_state: BaseState
+@export var kick_state: BaseState
 
 func enter() -> void:
 	super()
@@ -19,6 +20,8 @@ func input(_event: InputEvent) -> BaseState:
 		return walk_state
 	if Input.is_action_pressed("move_crouch"):
 		return crouch_state
+	if Input.is_action_just_pressed("action_punch"):
+		return punch_state
 	return null
 
 
