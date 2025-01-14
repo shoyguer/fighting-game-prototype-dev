@@ -10,6 +10,7 @@ func enter() -> void:
 	#animation_tree.animation_travel("Jump")
 	context.velocity.y = context.jump_velocity
 	#AudioManager.play_audio("jump", 0)
+	animation_tree.set_movement_transition("jump_input")
 
 func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= gravity * delta

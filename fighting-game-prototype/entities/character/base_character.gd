@@ -3,6 +3,10 @@ extends CharacterBody3D
 
 signal health_changes
 
+
+
+@onready var animation_tree: AnimationStateMachine = %AnimationTree
+
 ## For setting the current direction of the character
 @export_group("Character")
 @export var character_data: CharacterData
@@ -42,6 +46,7 @@ var is_player: bool = false
 
 
 @onready var mesh: MeshInstance3D = %Mesh
+@onready var mesh_root: Node3D = %MeshRoot
 @onready var collision: CollisionShape3D = %Collision
 @onready var move_component: MoveComponent = %MoveComponent
 @onready var state_manager: StateManager = %StateManager
@@ -58,16 +63,23 @@ func _ready() -> void:
 		move_component.init(self)
 
 
+func _process(delta: float) -> void:
+	pass
+	
+
+
 func _physics_process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		state_manager.physics_process(delta)
-	
 	
 
 
 func _input(event: InputEvent) -> void:
 	if not Engine.is_editor_hint():
 		state_manager.input(event)
+	
+	
+
 
 func character_resource() -> void:
 	pass

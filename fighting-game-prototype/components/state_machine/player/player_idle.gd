@@ -9,6 +9,7 @@ func enter() -> void:
 	super()
 	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0
+	animation_tree.set_movement_transition("walk_input")
 
 
 func input(_event: InputEvent) -> BaseState:
@@ -22,6 +23,7 @@ func input(_event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
+	animation_tree.set_blend_position(Vector2.ZERO)
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	

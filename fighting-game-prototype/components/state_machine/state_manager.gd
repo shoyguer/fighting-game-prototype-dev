@@ -6,10 +6,11 @@ extends Node
 
 var current_state: BaseState
 var states: Dictionary = {}
-
+var animation_tree: AnimationStateMachine
 
 func init(context: BaseCharacter) -> void:
 	starting_state = context.starting_state
+	animation_tree = context.animation_tree
 	
 	for child: BaseState in get_children():
 		child.init(context)
