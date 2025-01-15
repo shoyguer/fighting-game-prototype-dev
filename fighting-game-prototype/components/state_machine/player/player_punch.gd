@@ -31,6 +31,9 @@ func physics_process(delta: float) -> BaseState:
 	
 	if context.is_punching == false:
 		return idle_state
+	else:
+		if Input.is_action_just_pressed("action_punch"):
+			pass
 	#if animation_tree.animation_finished:
 	#	return idle_state
 	#if !context.is_punching:
