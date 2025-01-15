@@ -32,6 +32,8 @@ signal health_changes
 @export var sprint_state: BaseState
 @export var punch_state: BaseState
 @export var kick_state: BaseState
+@export var hit_state: BaseState
+@export var death_state: BaseState
 @export var starting_state: BaseState
 
 enum Direction {
@@ -46,7 +48,9 @@ var jump_velocity: float = 10
 var is_player: bool = false
 
 var is_punching: bool = false
-
+var is_kicking: bool = false
+var is_hit: bool = false
+var is_dead: bool = false
 
 @onready var mesh: MeshInstance3D = %Mesh
 @onready var mesh_root: Node3D = %MeshRoot
@@ -67,7 +71,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
+	if cur_health_points <= 0:
+		is_dead = true
 	
 
 
@@ -86,3 +91,12 @@ func _input(event: InputEvent) -> void:
 
 func character_resource() -> void:
 	pass
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if "Punch_0" in anim_name:
+		is_punching = false
+	if "Kick" in anim_name:
+		is_kicking = false
+	if "Hit" in anim_name:
+		is_hit = false

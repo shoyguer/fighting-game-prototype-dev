@@ -3,6 +3,7 @@ extends BaseState
 
 @export var idle_state: BaseState
 @export var walk_state: BaseState
+@export var hit_state: BaseState
 
 func enter() -> void:
 	print("entrou pulo")
@@ -11,6 +12,12 @@ func enter() -> void:
 	context.velocity.y = context.jump_velocity
 	#AudioManager.play_audio("jump", 0)
 	animation_tree.set_movement_transition("jump_input")
+
+
+func input(event: InputEvent) -> BaseState:
+	if Input.is_action_just_pressed("less_health"):
+		return hit_state
+	return null
 
 func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= gravity * delta

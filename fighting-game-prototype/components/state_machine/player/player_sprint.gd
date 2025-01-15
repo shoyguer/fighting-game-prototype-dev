@@ -10,9 +10,12 @@ var acceleration = 50
 
 func enter() -> void:
 	super()
+	animation_tree.set_movement_transition("sprint_input")
 
 
 func physics_process(delta: float) -> BaseState:
+	var current_input = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
+	animation_tree.set_blend_position(current_input)
 	if wants_jump() and context.is_on_floor():
 		return jump_state
 	

@@ -29,7 +29,8 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	_on_animation_player_animation_finished("Punch_0")
+	if context.is_punching == false:
+		return idle_state
 	#if animation_tree.animation_finished:
 	#	return idle_state
 	#if !context.is_punching:
@@ -37,8 +38,3 @@ func physics_process(delta: float) -> BaseState:
 	#if !context.is_on_floor():
 	#	return fall_state
 	return null
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	print("Animação terminou")
-	context.is_punching = false

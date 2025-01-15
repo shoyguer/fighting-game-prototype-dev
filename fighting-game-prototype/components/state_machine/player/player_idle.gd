@@ -5,6 +5,8 @@ extends BaseState
 @export var crouch_state: BaseState
 @export var punch_state: BaseState
 @export var kick_state: BaseState
+@export var hit_state: BaseState
+@export var death_state: BaseState
 
 func enter() -> void:
 	super()
@@ -22,6 +24,10 @@ func input(_event: InputEvent) -> BaseState:
 		return crouch_state
 	if Input.is_action_just_pressed("action_punch"):
 		return punch_state
+	if Input.is_action_just_pressed("action_kick"):
+		return kick_state
+	if Input.is_action_just_pressed("less_health"):
+		return hit_state
 	return null
 
 
@@ -30,7 +36,8 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	
+	if context.is_dead:
+		return death_state
 	#if !context.is_on_floor():
 	#	return fall_state
 	return null

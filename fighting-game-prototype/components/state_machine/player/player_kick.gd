@@ -1,5 +1,6 @@
 extends BaseState
 
+@export var idle_state: BaseState
 @export var walk_state: BaseState
 @export var jump_state: BaseState
 @export var crouch_state: BaseState
@@ -7,9 +8,10 @@ extends BaseState
 
 func enter() -> void:
 	super()
+	context.is_kicking = true
 	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0
-	animation_tree.set_movement_transition("walk_input")
+	animation_tree.set_movement_transition("kick_input")
 
 
 func input(_event: InputEvent) -> BaseState:
@@ -27,7 +29,8 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	
+	if context.is_kicking == false:
+		return idle_state
 	#if !context.is_on_floor():
 	#	return fall_state
 	return null
