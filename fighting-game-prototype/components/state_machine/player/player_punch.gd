@@ -15,12 +15,12 @@ func enter() -> void:
 
 
 func input(_event: InputEvent) -> BaseState:
-	if wants_jump() and context.is_on_floor():
-		return jump_state
-	if get_movement_direction() != 0.0:
-		return walk_state
-	if Input.is_action_pressed("move_crouch"):
-		return crouch_state
+	#if wants_jump() and context.is_on_floor():
+	#	return jump_state
+	#if get_movement_direction() != 0.0:
+	#	return walk_state
+	#if Input.is_action_pressed("move_crouch"):
+	#	return crouch_state
 	return null
 
 
