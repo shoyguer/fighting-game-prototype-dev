@@ -1,3 +1,4 @@
+class_name PlayerStateCrouch
 extends BaseState
 
 
@@ -5,15 +6,14 @@ extends BaseState
 @export var walk_state: BaseState
 @export var jump_state: BaseState
 @export var sprint_state: BaseState
-
 var acceleration = 50
+
 
 func enter() -> void:
 	print("entrou crouch")
 	#context.mesh.scale.y = context.mesh.scale.y / 2
 	#context.collision.scale.y = context.collision.scale.y / 2
 	super()
-	#animation_tree.animation_travel("Walk")
 
 
 func input(event: InputEvent) -> BaseState:

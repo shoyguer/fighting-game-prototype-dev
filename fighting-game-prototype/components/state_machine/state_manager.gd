@@ -3,10 +3,10 @@ extends Node
 
 
 @export var starting_state: BaseState
-
 var current_state: BaseState
 var states: Dictionary = {}
 var animation_tree: AnimationStateMachine
+
 
 func init(context: BaseCharacter) -> void:
 	starting_state = context.starting_state

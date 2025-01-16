@@ -1,5 +1,5 @@
+class_name PlayerStateWalk
 extends BaseState
-
 
 
 @export var idle_state: BaseState
@@ -7,13 +7,10 @@ extends BaseState
 @export var jump_state: BaseState
 @export var sprint_state: BaseState
 @export var hit_state: BaseState
-
 var acceleration = 50
-
 var sprint_max_time: float = 0.2
 var sprint_cur_time: float = 0.0
 var sprint_wait_time: bool = false
-
 var sprint_key: int = 0
 
 
@@ -51,7 +48,6 @@ func input(event: InputEvent) -> BaseState:
 	return null
 
 
-
 func physics_process(delta: float) -> BaseState:
 	var current_input: Vector2 = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
 	animation_tree.set_blend_position(current_input)
@@ -75,8 +71,6 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.x = move_toward(context.velocity.x, movement, acceleration * delta)
 	
 	context.move_and_slide()
-	
-	
 	
 	if (movement == 0) and (sprint_wait_time == false):
 		return idle_state

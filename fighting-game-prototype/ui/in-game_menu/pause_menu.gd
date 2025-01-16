@@ -25,6 +25,10 @@ func _menu_button_pressed(button: UIButton) -> void:
 		button.ButtonType.QUIT_GAME:
 			get_tree().quit()
 		
+		button.ButtonType.RESTART:
+			Global.pause_game(false)
+			get_tree().reload_current_scene()
+		
 		_:
 			if button.scene_path_to_load != "":
 				SceneLoader.load_scene(button.scene_path_to_load)

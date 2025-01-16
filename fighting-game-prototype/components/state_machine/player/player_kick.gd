@@ -1,4 +1,6 @@
+class_name PlayerStateKick
 extends BaseState
+
 
 @export var idle_state: BaseState
 @export var walk_state: BaseState
@@ -12,16 +14,6 @@ func enter() -> void:
 	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0
 	animation_tree.set_movement_transition("kick_input")
-
-
-func input(_event: InputEvent) -> BaseState:
-	#if wants_jump() and context.is_on_floor():
-	#	return jump_state
-	#if get_movement_direction() != 0.0:
-	#	return walk_state
-	#if Input.is_action_pressed("move_crouch"):
-	#	return crouch_state
-	return null
 
 
 func physics_process(delta: float) -> BaseState:

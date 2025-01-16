@@ -1,4 +1,6 @@
+class_name PlayerStatePunch
 extends BaseState
+
 
 @export var idle_state: BaseState
 @export var walk_state: BaseState

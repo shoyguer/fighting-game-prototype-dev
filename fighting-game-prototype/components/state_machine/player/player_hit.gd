@@ -1,4 +1,6 @@
+class_name PlayerStateHit
 extends BaseState
+
 
 @export var idle_state: BaseState
 @export var walk_state: BaseState
@@ -10,23 +12,13 @@ extends BaseState
 
 func enter() -> void:
 	super()
-	#animation_tree.animation_travel("Idle")
 	context.is_hit = true
 	context.velocity.x = 0
 	animation_tree.set_movement_transition("hit_input")
 
 
 func input(_event: InputEvent) -> BaseState:
-	#if wants_jump() and context.is_on_floor():
-	#	return jump_state
-	#if get_movement_direction() != 0.0:
-	#	return walk_state
-	#if Input.is_action_pressed("move_crouch"):
-	#	return crouch_state
-	#if Input.is_action_just_pressed("action_punch"):
-	#	return punch_state
-	#if Input.is_action_just_pressed("action_kick"):
-	#	return kick_state
+	### START THE COMBO
 	return null
 
 

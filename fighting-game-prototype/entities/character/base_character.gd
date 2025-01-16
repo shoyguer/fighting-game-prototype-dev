@@ -3,9 +3,9 @@ extends CharacterBody3D
 
 signal health_changes
 
-
-
-@onready var animation_tree: AnimationStateMachine = %AnimationTree
+enum Direction {
+	LEFT = -1, RIGHT = 1
+}
 
 ## For setting the current direction of the character
 @export_group("Character")
@@ -36,17 +36,11 @@ signal health_changes
 @export var death_state: BaseState
 @export var starting_state: BaseState
 
-enum Direction {
-	LEFT = -1, RIGHT = 1
-}
-
 var move_speed: float = 5
 var sprint_speed: float = 10
 var crouch_speed: float = 2
 var jump_velocity: float = 10
-# Is it a real player or is it being controlled by AI?
-var is_player: bool = false
-
+var is_player: bool = false # Is it a real player or is it being controlled by AI?
 var is_punching: bool = false
 var is_kicking: bool = false
 var is_hit: bool = false
@@ -57,7 +51,7 @@ var is_dead: bool = false
 @onready var collision: CollisionShape3D = %Collision
 @onready var move_component: MoveComponent = %MoveComponent
 @onready var state_manager: StateManager = %StateManager
-
+@onready var animation_tree: AnimationStateMachine = %AnimationTree
 
 func _ready() -> void:
 	character_data.character_name = "Fighter"

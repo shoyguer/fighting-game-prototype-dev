@@ -1,4 +1,6 @@
+class_name PlayerStateIdle
 extends BaseState
+
 
 @export var walk_state: BaseState
 @export var jump_state: BaseState
@@ -7,6 +9,7 @@ extends BaseState
 @export var kick_state: BaseState
 @export var hit_state: BaseState
 @export var death_state: BaseState
+
 
 func enter() -> void:
 	super()
