@@ -6,6 +6,8 @@ extends BaseState
 @export var crouch_state: BaseState
 @export var jump_state: BaseState
 @export var sprint_state: BaseState
+@export var punch_state: BaseState
+@export var kick_state: BaseState
 @export var hit_state: BaseState
 var acceleration = 50
 var sprint_max_time: float = 0.2
@@ -23,6 +25,10 @@ func enter() -> void:
 
 
 func input(event: InputEvent) -> BaseState:
+	if Input.is_action_just_pressed("action_punch"):
+		return punch_state
+	if Input.is_action_just_pressed("action_kick"):
+		return kick_state
 	if Input.is_action_just_pressed("less_health"):
 		return hit_state
 	if Input.is_action_pressed("move_crouch"):

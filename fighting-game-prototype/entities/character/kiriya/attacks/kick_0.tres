@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseAttack" load_steps=2 format=3 uid="uid://ca474b1dklt1q"]
+
+[ext_resource type="Script" path="res://resources/base_attack.gd" id="1_0btfj"]
+
+[resource]
+script = ExtResource("1_0btfj")
+animation_name = "kick_input"
+speed_multiplier = 1.0
+damage = 0

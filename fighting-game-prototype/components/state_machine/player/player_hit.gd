@@ -17,11 +17,6 @@ func enter() -> void:
 	animation_tree.set_movement_transition("hit_input")
 
 
-func input(_event: InputEvent) -> BaseState:
-	### START THE COMBO
-	return null
-
-
 func physics_process(delta: float) -> BaseState:
 	animation_tree.set_blend_position(Vector2.ZERO)
 	context.velocity.y -= (gravity * delta)
