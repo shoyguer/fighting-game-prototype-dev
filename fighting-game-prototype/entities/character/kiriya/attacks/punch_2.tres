@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="BaseAttack" load_steps=2 format=3 uid="uid://cpa6p3fmywjqi"]
+[gd_resource type="Resource" script_class="BaseAttack" load_steps=2 format=3 uid="uid://cjsb2xubo4ax3"]
 
-[ext_resource type="Script" path="res://resources/base_attack.gd" id="1_8y04r"]
+[ext_resource type="Script" path="res://resources/base_attack.gd" id="1_0ilw6"]
 
 [resource]
-script = ExtResource("1_8y04r")
+script = ExtResource("1_0ilw6")
 animation_name = "Punch_2"
 speed_multiplier = 0.0
 damage = 0
-animation_time = 1.0
+animation_time = 2.0

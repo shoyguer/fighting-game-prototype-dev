@@ -2,7 +2,7 @@ class_name PlayerStatePunch
 extends BaseState
 
 
-enum TimerType {
+enum {
 	CAN_ATTACK,
 	END_ATTACK
 }
@@ -12,7 +12,7 @@ const COMBO_TIME: float = 0.5
 @export var walk_state: BaseState
 @export var jump_state: BaseState
 @export var crouch_state: BaseState
-var timer_type: TimerType = TimerType.CAN_ATTACK
+var timer_type: int = CAN_ATTACK
 var combo: Array = []
 var can_combo: bool = false
 var current_attack: BaseAttack = null
@@ -30,16 +30,18 @@ func enter() -> void:
 	combo = context.character_data.attacks.punches
 	#animation_tree.animation_travel("Idle")
 	attack_index = 0
+	can_combo = false
 	context.velocity.x = 0
 	context.is_punching = true
-	timer_type = TimerType.CAN_ATTACK
+	timer_type = CAN_ATTACK
 	await combo_manager(true)
 	play_attack()
 	if not context.animation_tree.animation_finished.is_connected(_animation_finished):
 		context.animation_tree.animation_finished.connect(_animation_finished)
 
-func input(_event: InputEvent) -> BaseState:
-	# TODO: Start the combo
+func input(event: InputEvent) -> BaseState:
+	if event.is_action_pressed("action_punch") and can_combo:
+		combo_manager()
 	return null
 
 
@@ -48,16 +50,6 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	#if context.is_punching == false:
-	#	return idle_state
-	if Input.is_action_just_pressed("action_punch") and can_combo:
-		combo_manager()
-	#if animation_tree.animation_finished:
-	#	return idle_state
-	#if !context.is_punching:
-	#	return idle_state
-	#if !context.is_on_floor():
-	#	return fall_state
 	return null
 
 
@@ -70,7 +62,8 @@ func combo_manager(just_initiated: bool = false) -> void:
 		if attack_index > combo.size() - 1:
 			attack_index = 0
 		current_attack = combo[attack_index]
-		timer.stop()
+	can_combo = false
+	timer.stop()
 
 
 func play_attack() -> void:
@@ -82,8 +75,8 @@ func play_attack() -> void:
 
 
 func _timer_timeout() -> void:
-	if timer_type == TimerType.CAN_ATTACK:
-		timer_type = TimerType.END_ATTACK
+	if timer_type == CAN_ATTACK:
+		timer_type = END_ATTACK
 		can_combo = true
 		timer.wait_time = COMBO_TIME
 		timer.start()
@@ -95,3 +88,6 @@ func _timer_timeout() -> void:
 func _animation_finished(anim_name: StringName) -> void:
 	if anim_name != current_attack.animation_name:
 		play_attack()
+	else:
+		timer.stop()
+		context.state_manager.change_state(idle_state)
