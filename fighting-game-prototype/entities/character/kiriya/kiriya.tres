@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://ca5psicr2v64e"]
+
+[ext_resource type="Script" path="res://resources/character_data.gd" id="1_8h7xj"]
+[ext_resource type="Resource" uid="uid://db1rf1vtkm82g" path="res://entities/character/kiriya/attacks/punch_0.tres" id="1_kjgcl"]
+[ext_resource type="Resource" uid="uid://b60ky5tegu81h" path="res://entities/character/kiriya/attacks/punch_1.tres" id="2_vgcec"]
+[ext_resource type="Resource" uid="uid://cjsb2xubo4ax3" path="res://entities/character/kiriya/attacks/punch_2.tres" id="3_xf61j"]
+[ext_resource type="Resource" uid="uid://ca474b1dklt1q" path="res://entities/character/kiriya/attacks/kick_0.tres" id="4_py47s"]
+
+[resource]
+script = ExtResource("1_8h7xj")
+max_health = 1000
+character_name = "Kiriya"
+attacks = {
+"kicks": [ExtResource("4_py47s")],
+"punches": [ExtResource("1_kjgcl"), ExtResource("2_vgcec"), ExtResource("3_xf61j")]
+}

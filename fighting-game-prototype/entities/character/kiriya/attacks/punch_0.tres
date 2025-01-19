@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseAttack" load_steps=2 format=3 uid="uid://db1rf1vtkm82g"]
+
+[ext_resource type="Script" path="res://resources/base_attack.gd" id="1_0emot"]
+
+[resource]
+script = ExtResource("1_0emot")
+animation_name = "Punch_0"
+speed_multiplier = 0.0
+damage = 0
+animation_time = 0.7

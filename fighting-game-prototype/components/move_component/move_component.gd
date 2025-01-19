@@ -24,18 +24,18 @@ func get_movement_direction() -> float:
 
 
 func get_movement_released() -> float:
-	var direction: float = 0
+	var move_direction: float = 0
 	if Input.is_action_just_released("move_left"):
-		direction = -1
+		move_direction = -1
 	if Input.is_action_just_released("move_right"):
-		direction = 1
-	return direction
+		move_direction = 1
+	return move_direction
 
 
 func get_movement_pressed() -> float:
-	var direction: float = 0
+	var move_direction: float = 0
 	if Input.is_action_just_pressed("move_left"):
-		direction = -1
+		move_direction = -1
 	if Input.is_action_just_pressed("move_right"):
-		direction = 1
-	return direction
+		move_direction = 1
+	return move_direction

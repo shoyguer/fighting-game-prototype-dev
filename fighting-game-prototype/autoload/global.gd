@@ -15,6 +15,6 @@ func pause_game(mode: bool) -> void:
 	get_tree().paused = mode
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_game(true)

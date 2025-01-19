@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://6rufvh6w0dte"]
+
+[ext_resource type="PackedScene" uid="uid://bx38n64j6qax6" path="res://entities/character/kiriya/Kiriya_v4.glb" id="2_7gleh"]
+
+[sub_resource type="GDScript" id="GDScript_8m2vh"]
+script/source = "class_name  KiriyaCharacter
+extends BaseCharacter
+
+
+func _physics_process(delta: float) -> void:
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obm03"]
+
+[node name="Kiriya" type="CharacterBody3D"]
+script = SubResource("GDScript_8m2vh")
+
+[node name="MeshRoot" type="Node3D" parent="."]
+
+[node name="Kiriya_v4" parent="MeshRoot" instance=ExtResource("2_7gleh")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_obm03")

@@ -7,7 +7,6 @@ extends Control
 func _ready() -> void:
 	# Connects all the main_menu buttons button_got_pressed signals.
 	for button: UIButton in buttons.get_children():
-		print(button)
 		button.button_got_pressed.connect(_menu_button_pressed)
 
 
@@ -24,6 +23,10 @@ func _menu_button_pressed(button: UIButton) -> void:
 		
 		button.ButtonType.QUIT_GAME:
 			get_tree().quit()
+		
+		button.ButtonType.RESTART:
+			Global.pause_game(false)
+			get_tree().reload_current_scene()
 		
 		_:
 			if button.scene_path_to_load != "":

@@ -3,13 +3,14 @@ extends Node
 
 
 @export var starting_state: BaseState
-
 var current_state: BaseState
 var states: Dictionary = {}
+var animation_tree: AnimationStateMachine
 
 
 func init(context: BaseCharacter) -> void:
 	starting_state = context.starting_state
+	animation_tree = context.animation_tree
 	
 	for child: BaseState in get_children():
 		child.init(context)
@@ -18,7 +19,6 @@ func init(context: BaseCharacter) -> void:
 
 
 func change_state(new_state: BaseState) -> void:
-	print(new_state.name)
 	if current_state:
 		current_state.exit()
 	current_state = new_state
