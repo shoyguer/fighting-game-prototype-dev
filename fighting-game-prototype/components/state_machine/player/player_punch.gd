@@ -2,17 +2,17 @@ class_name PlayerStatePunch
 extends BaseState
 
 
-enum {
-	CAN_ATTACK,
-	END_ATTACK
-}
+#enum {
+#	CAN_ATTACK,
+#	END_ATTACK
+#}
 
-const COMBO_TIME: float = 0.5
+#const COMBO_TIME: float = 0.5
 @export var idle_state: BaseState
 @export var walk_state: BaseState
 @export var jump_state: BaseState
 @export var crouch_state: BaseState
-var timer_type: int = CAN_ATTACK
+#var timer_type: int = CAN_ATTACK
 var combo: Array = []
 var can_combo: bool = false
 var current_attack: BaseAttack = null
@@ -33,7 +33,7 @@ func enter() -> void:
 	can_combo = false
 	context.velocity.x = 0
 	context.is_punching = true
-	timer_type = CAN_ATTACK
+	#timer_type = CAN_ATTACK
 	await combo_manager(true)
 	play_attack()
 	if not context.animation_tree.animation_finished.is_connected(_animation_finished):
@@ -62,32 +62,25 @@ func combo_manager(just_initiated: bool = false) -> void:
 		if attack_index > combo.size() - 1:
 			attack_index = 0
 		current_attack = combo[attack_index]
-	can_combo = false
-	timer.stop()
+		can_combo = false
+		timer.stop()
 
 
 func play_attack() -> void:
 	var animation_name: String = current_attack.animation_name
 	print(animation_name)
 	animation_tree.set_movement_transition(animation_name)
-	timer.wait_time = COMBO_TIME
+	#timer.wait_time = COMBO_TIME
+	timer.wait_time = current_attack.animation_time
 	timer.start()
 
 
 func _timer_timeout() -> void:
-	if timer_type == CAN_ATTACK:
-		timer_type = END_ATTACK
-		can_combo = true
-		timer.wait_time = COMBO_TIME
-		timer.start()
-	else:
-		can_combo = false
-		context.state_manager.change_state(idle_state)
+	can_combo = true
 
 
 func _animation_finished(anim_name: StringName) -> void:
 	if anim_name != current_attack.animation_name:
 		play_attack()
 	else:
-		timer.stop()
 		context.state_manager.change_state(idle_state)

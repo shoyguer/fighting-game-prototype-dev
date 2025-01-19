@@ -7,4 +7,4 @@ script = ExtResource("1_0emot")
 animation_name = "Punch_0"
 speed_multiplier = 0.0
 damage = 0
-animation_time = 1.0
+animation_time = 0.7
