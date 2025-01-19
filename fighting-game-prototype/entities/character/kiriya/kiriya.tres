@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://resources/character_data.gd" id="1_8h7xj"]
 [ext_resource type="Resource" uid="uid://db1rf1vtkm82g" path="res://entities/character/kiriya/attacks/punch_0.tres" id="1_kjgcl"]
-[ext_resource type="Resource" uid="uid://1ogknbeo3mks" path="res://entities/character/kiriya/attacks/punch_1.tres" id="2_vgcec"]
-[ext_resource type="Resource" uid="uid://cpa6p3fmywjqi" path="res://entities/character/kiriya/attacks/punch_2.tres" id="3_xf61j"]
+[ext_resource type="Resource" uid="uid://b60ky5tegu81h" path="res://entities/character/kiriya/attacks/punch_1.tres" id="2_vgcec"]
+[ext_resource type="Resource" uid="uid://cjsb2xubo4ax3" path="res://entities/character/kiriya/attacks/punch_2.tres" id="3_xf61j"]
 [ext_resource type="Resource" uid="uid://ca474b1dklt1q" path="res://entities/character/kiriya/attacks/kick_0.tres" id="4_py47s"]
 
 [resource]

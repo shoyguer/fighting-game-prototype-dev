@@ -7,7 +7,6 @@ extends Control
 func _ready() -> void:
 	# Connects all the main_menu buttons button_got_pressed signals.
 	for button: UIButton in buttons.get_children():
-		print(button)
 		button.button_got_pressed.connect(_menu_button_pressed)
 
 

@@ -11,18 +11,17 @@ extends BaseState
 func enter() -> void:
 	super()
 	context.is_kicking = true
-	#animation_tree.animation_travel("Idle")
 	context.velocity.x = 0
-	animation_tree.set_movement_transition("kick_input")
+	animation_tree.set_movement_transition("Kick")
 
 
 func physics_process(delta: float) -> BaseState:
-	animation_tree.set_blend_position(Vector2.ZERO)
+	animation_tree.set_walk_blend(Vector2.ZERO)
+	animation_tree.set_sprint_blend(Vector2.ZERO)
+	
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
 	if context.is_kicking == false:
 		return idle_state
-	#if !context.is_on_floor():
-	#	return fall_state
 	return null

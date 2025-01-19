@@ -21,21 +21,21 @@ func enter() -> void:
 	sprint_cur_time = 0.0
 	sprint_key = 0
 	super()
-	animation_tree.set_movement_transition("walk_input")
+	animation_tree.set_movement_transition("Walk")
 
 
 func input(event: InputEvent) -> BaseState:
-	if Input.is_action_just_pressed("action_punch"):
+	if event.is_action_pressed("action_punch"):
 		return punch_state
-	if Input.is_action_just_pressed("action_kick"):
+	if event.is_action_pressed("action_kick"):
 		return kick_state
-	if Input.is_action_just_pressed("less_health"):
+	if event.is_action_pressed("less_health"):
 		return hit_state
-	if Input.is_action_pressed("move_crouch"):
+	if event.is_action_pressed("move_crouch"):
 		return crouch_state
 	
 	if (sprint_wait_time == false):
-		sprint_key = move_component.get_movement_released()
+		sprint_key = int(move_component.get_movement_released())
 	
 	if sprint_key != 0:
 		sprint_wait_time = true
@@ -56,7 +56,7 @@ func input(event: InputEvent) -> BaseState:
 
 func physics_process(delta: float) -> BaseState:
 	var current_input: Vector2 = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
-	animation_tree.set_blend_position(current_input)
+	animation_tree.set_walk_blend(current_input)
 	
 	if sprint_cur_time >= sprint_max_time:
 		sprint_wait_time = false

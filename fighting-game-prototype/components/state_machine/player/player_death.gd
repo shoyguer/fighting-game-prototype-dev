@@ -12,10 +12,9 @@ extends BaseState
 
 func enter() -> void:
 	super()
-	#animation_tree.animation_travel("Idle")
 	context.is_dead = true
 	context.velocity.x = 0
-	animation_tree.set_movement_transition("death_input")
+	animation_tree.set_movement_transition("Death")
 
 
 func physics_process(delta: float) -> BaseState:
@@ -23,8 +22,4 @@ func physics_process(delta: float) -> BaseState:
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
-	#if context.is_dead == false:
-	#	return idle_state
-	#if !context.is_on_floor():
-	#	return fall_state
 	return null

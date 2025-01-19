@@ -1,7 +1,8 @@
 class_name BaseCharacter
 extends CharacterBody3D
 
-signal health_changes
+
+#signal health_changes
 
 enum Direction {
 	LEFT = -1, RIGHT = 1
@@ -64,7 +65,7 @@ func _ready() -> void:
 		move_component.init(self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if cur_health_points <= 0:
 		is_dead = true
 	

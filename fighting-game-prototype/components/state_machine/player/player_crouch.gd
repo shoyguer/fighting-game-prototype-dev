@@ -9,24 +9,15 @@ extends BaseState
 var acceleration = 50
 
 
-func enter() -> void:
-	print("entrou crouch")
-	#context.mesh.scale.y = context.mesh.scale.y / 2
-	#context.collision.scale.y = context.collision.scale.y / 2
-	super()
-
-
 func input(event: InputEvent) -> BaseState:
 	if event.is_action_released("move_crouch"):
-		#context.mesh.scale.y = context.mesh.scale.y * 2
-		#context.collision.scale.y = context.collision.scale.y * 2
 		return walk_state
 	return null
 
 
 func physics_process(delta: float) -> BaseState:
 	var current_input: Vector2 = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
-	animation_tree.set_blend_position(current_input)
+	animation_tree.set_walk_blend(current_input)
 	
 	context.velocity.y -= gravity * delta
 	

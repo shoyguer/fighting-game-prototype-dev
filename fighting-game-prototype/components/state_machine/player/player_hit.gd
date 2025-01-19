@@ -14,7 +14,7 @@ func enter() -> void:
 	super()
 	context.is_hit = true
 	context.velocity.x = 0
-	animation_tree.set_movement_transition("hit_input")
+	animation_tree.set_movement_transition("Hit")
 
 
 func physics_process(delta: float) -> BaseState:
@@ -24,6 +24,4 @@ func physics_process(delta: float) -> BaseState:
 	
 	if context.is_hit == false:
 		return idle_state
-	#if !context.is_on_floor():
-	#	return fall_state
 	return null
