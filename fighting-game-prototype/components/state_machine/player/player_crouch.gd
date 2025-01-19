@@ -16,14 +16,15 @@ func input(event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
-	var current_input: Vector2 = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
-	animation_tree.set_walk_blend(current_input)
-	
-	context.velocity.y -= gravity * delta
-	
-	var movement: float = get_movement_direction() * context.move_speed
-	context.velocity.x = move_toward(context.velocity.x, movement/2, acceleration * delta)
-	
-	context.move_and_slide()
+	if context.is_player:
+		var current_input: Vector2 = Input.get_vector("move_left", "move_right", "move_crouch", "move_jump")
+		animation_tree.set_walk_blend(current_input)
+		
+		context.velocity.y -= gravity * delta
+		
+		var movement: float = get_movement_direction() * context.move_speed
+		context.velocity.x = move_toward(context.velocity.x, movement/2, acceleration * delta)
+		
+		context.move_and_slide()
 	
 	return null

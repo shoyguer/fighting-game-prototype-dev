@@ -87,6 +87,13 @@ action_kick={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="environment"
+3d_physics/layer_2="character"
+3d_physics/layer_3="hurt_box"
+3d_physics/layer_4="hit_box"
+
 [physics]
 
 3d/default_gravity=30.0

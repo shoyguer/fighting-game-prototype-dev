@@ -22,5 +22,7 @@ func physics_process(delta: float) -> BaseState:
 	if context.is_on_floor():
 		if movement != 0:
 			return walk_state
+		
 		return idle_state
+	
 	return null

@@ -18,10 +18,13 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	animation_tree.set_blend_position(Vector2.ZERO)
+	animation_tree.set_walk_blend(Vector2.ZERO)
+	animation_tree.set_run_blend(Vector2.ZERO)
+	
 	context.velocity.y -= (gravity * delta)
 	context.move_and_slide()
 	
 	if context.is_hit == false:
 		return idle_state
+	
 	return null

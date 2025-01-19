@@ -9,7 +9,7 @@
 [resource]
 script = ExtResource("1_8h7xj")
 max_health = 1000
-character_name = "Kiriya"
+character_name = "Fighter"
 attacks = {
 "kicks": [ExtResource("4_py47s")],
 "punches": [ExtResource("1_kjgcl"), ExtResource("2_vgcec"), ExtResource("3_xf61j")]
