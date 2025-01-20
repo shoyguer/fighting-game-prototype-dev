@@ -3,7 +3,8 @@ class_name BaseCharacter
 extends CharacterBody3D
 
 
-signal health_changed()
+#region Variable Declaration
+signal health_changed(character: BaseCharacter)
 
 enum {
 	RIGHT,
@@ -18,6 +19,8 @@ enum {
 	set(value):
 		cur_health_points = value
 		cur_health_points = clampi(cur_health_points, 0, max_health_points)
+		
+		health_changed.emit(self)
 	get:
 		return cur_health_points
 @export var turn_time: float = 0.66
@@ -26,7 +29,7 @@ enum {
 		direction = value
 		direction = clampi(direction, 0, 1)
 		
-		if is_node_ready():
+		if is_node_ready() and not is_dead:
 			match direction:
 				RIGHT:
 					var tween = create_tween()
@@ -71,14 +74,21 @@ var is_dead: bool = false
 @onready var state_manager: StateManager = %StateManager
 @onready var animation_tree: AnimationStateMachine = %AnimationTree
 
+@onready var hurt_box: HurtBox = %HurtBox
+@onready var hit_box: HitBox = %HitBox
+#endregion
+
 
 func _ready() -> void:
-	character_data.character_name = "Fighter"
-	
-	direction = direction
-	
 	# If not in editor, state manager and move component will be initialized
 	if not Engine.is_editor_hint():
+		hit_box.init(self)
+		hurt_box.init(self)
+	
+		character_data.character_name = "Fighter"
+	
+		direction = direction
+		
 		state_manager.init(self)
 		move_component.init(self)
 
@@ -119,3 +129,11 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		is_kicking = false
 	if "Hit" in anim_name:
 		is_hit = false
+
+
+func set_hit_box(attack: BaseAttack) -> void:
+	hit_box.set_collision(attack)
+
+
+func disable_hit_box(type: bool) -> void:
+	hit_box.disable_collision(type)

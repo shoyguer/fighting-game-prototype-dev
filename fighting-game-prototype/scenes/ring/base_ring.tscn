@@ -24,12 +24,12 @@ glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mwomd"]
 lightmap_size_hint = Vector2i(152, 27)
-size = Vector2(30, 5)
+size = Vector2(100, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdpws"]
 albedo_color = Color(0.117677, 0.238708, 0.113718, 1)
 albedo_texture = ExtResource("2_gttef")
-uv1_scale = Vector3(6, 1, 1)
+uv1_scale = Vector3(25, 50, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4j5rd"]
 size = Vector3(30, 1, 5)
@@ -207,6 +207,7 @@ offset_left = 453.0
 offset_right = 901.0
 offset_bottom = 48.0
 scale = Vector2(-1, 1)
+value = 100.0
 texture_under = ExtResource("6_c7t6p")
 texture_progress = ExtResource("7_fcmyi")
 

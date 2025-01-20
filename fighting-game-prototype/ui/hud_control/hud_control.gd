@@ -31,6 +31,9 @@ func _ready() -> void:
 	health_bar_1.value = character_1.character_data.current_health
 	name_1.text = character_1.character_data.character_name
 	character_1.health_bar = health_bar_1
+	
+	character_0.health_changed.connect(_animate_health)
+	character_1.health_changed.connect(_animate_health)
 
 
 func _input(event: InputEvent) -> void:
@@ -43,7 +46,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _animate_health(character: BaseCharacter) -> void:
-	var current_health: float = character.character_data.current_health
+	var current_health: float = character.cur_health_points
 	
 	var tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
