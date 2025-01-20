@@ -29,6 +29,7 @@ func enter() -> void:
 	@warning_ignore("redundant_await")
 	await combo_manager(true)
 	play_attack()
+	
 	if not context.animation_tree.animation_finished.is_connected(_animation_finished):
 		context.animation_tree.animation_finished.connect(_animation_finished)
 
@@ -69,7 +70,11 @@ func play_attack() -> void:
 
 
 func _timer_timeout() -> void:
+	context.set_hit_box(current_attack)
+	context.disable_hit_box(false)
 	can_combo = true
+	await get_tree().create_timer(0.33).timeout
+	context.disable_hit_box(true)
 
 
 func _animation_finished(anim_name: StringName) -> void:

@@ -42,4 +42,5 @@ func physics_process(delta: float) -> BaseState:
 	
 	if context.is_dead:
 		return death_state
+	
 	return null

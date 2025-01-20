@@ -24,4 +24,5 @@ func physics_process(delta: float) -> BaseState:
 	
 	if context.is_kicking == false:
 		return idle_state
+	
 	return null

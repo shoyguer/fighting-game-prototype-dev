@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="BaseAttack" load_steps=2 format=3 uid="uid://b60ky5tegu81h"]
+[gd_resource type="Resource" script_class="BaseAttack" load_steps=3 format=3 uid="uid://b60ky5tegu81h"]
 
 [ext_resource type="Script" path="res://resources/base_attack.gd" id="1_8l0yi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ydkp3"]
 
 [resource]
 script = ExtResource("1_8l0yi")
 animation_name = "Punch_1"
-speed_multiplier = 0.0
-damage = 0
-animation_time = 0.5
+damage = 75
+animation_time = 0.35
+hit_box_shape = SubResource("BoxShape3D_ydkp3")
+hit_box_position = Vector3(0.5, 1, 0)
