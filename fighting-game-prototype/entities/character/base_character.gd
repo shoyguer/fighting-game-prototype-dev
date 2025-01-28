@@ -123,7 +123,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if "Punch_0" in anim_name:
+	if "Punch_2" in anim_name:
 		is_punching = false
 	if "Kick" in anim_name:
 		is_kicking = false

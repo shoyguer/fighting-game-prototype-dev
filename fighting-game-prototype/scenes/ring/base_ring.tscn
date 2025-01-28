@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://2f1oiq4ce6ah"]
+[gd_scene load_steps=27 format=3 uid="uid://2f1oiq4ce6ah"]
 
 [ext_resource type="Script" path="res://scenes/ring/base_ring.gd" id="1_penw6"]
 [ext_resource type="PackedScene" uid="uid://ddwiy1mimsn0a" path="res://entities/character/base_character.tscn" id="2_81ipt"]
@@ -7,7 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://bb0otjgigu1cw" path="res://ui/hud_control/health_bar/health_background.svg" id="6_c7t6p"]
 [ext_resource type="Texture2D" uid="uid://boytioa66vyk6" path="res://ui/hud_control/portrait/placeholder.png" id="6_umaam"]
 [ext_resource type="Texture2D" uid="uid://j6opa33mtudy" path="res://ui/hud_control/health_bar/health_fill.svg" id="7_fcmyi"]
+[ext_resource type="Script" path="res://scenes/ring/audio_manager.gd" id="9_0wsae"]
 [ext_resource type="PackedScene" uid="uid://x41nwyiwuiu7" path="res://ui/in-game_menu/pause_menu.tscn" id="9_iqah3"]
+[ext_resource type="AudioStream" uid="uid://dedwfcnk8gn4u" path="res://assets/audio/punch_0.wav" id="9_t1fs5"]
+[ext_resource type="AudioStream" uid="uid://csfs0gbs8kr2q" path="res://assets/audio/punch_1.wav" id="10_yvp5o"]
+[ext_resource type="AudioStream" uid="uid://b2678um0o05rn" path="res://assets/audio/punch_2.wav" id="11_ex2cg"]
+[ext_resource type="AudioStream" uid="uid://dmmi6f0xcphqn" path="res://assets/audio/hurt_0.wav" id="12_dk1pk"]
+[ext_resource type="AudioStream" uid="uid://uunh4awwn18n" path="res://assets/audio/hurt_1.wav" id="13_umuut"]
+[ext_resource type="AudioStream" uid="uid://eedft4o1mxsj" path="res://assets/audio/hurt_2.wav" id="14_eswts"]
+[ext_resource type="AudioStream" uid="uid://ceuslvkbwbdwm" path="res://assets/audio/hurt_3.wav" id="15_p0uhk"]
+[ext_resource type="AudioStream" uid="uid://dwfis4gq6nld" path="res://assets/audio/kick_0.wav" id="16_dnhnr"]
+[ext_resource type="AudioStream" uid="uid://dlryk817uey72" path="res://assets/audio/dying_female.wav" id="17_omyj3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lj7xn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -222,3 +232,44 @@ text = "Enemy"
 
 [node name="PauseMenu" parent="." instance=ExtResource("9_iqah3")]
 visible = false
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("9_0wsae")
+
+[node name="Battle" type="Node" parent="AudioManager"]
+
+[node name="Punch0" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("9_t1fs5")
+
+[node name="Punch1" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("10_yvp5o")
+
+[node name="Punch2" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("11_ex2cg")
+
+[node name="Hurt0" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("12_dk1pk")
+
+[node name="Hurt1" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("13_umuut")
+
+[node name="Hurt2" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("14_eswts")
+
+[node name="Hurt3" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("15_p0uhk")
+
+[node name="Kick0" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("16_dnhnr")
+
+[node name="DyingFemale" type="AudioStreamPlayer" parent="AudioManager/Battle"]
+unique_name_in_owner = true
+stream = ExtResource("17_omyj3")
