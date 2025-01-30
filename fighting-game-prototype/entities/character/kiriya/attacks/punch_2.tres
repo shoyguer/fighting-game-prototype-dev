@@ -7,7 +7,8 @@
 [resource]
 script = ExtResource("1_0ilw6")
 animation_name = "Punch_2"
-damage = 120
+damage = 95
 animation_time = 0.8
 hit_box_shape = SubResource("BoxShape3D_3doqn")
 hit_box_position = Vector3(0.5, 1, 0)
+hit_sound = "res://assets/audio/sfx/punch_2.wav"

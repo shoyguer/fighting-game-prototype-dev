@@ -9,3 +9,6 @@ extends Resource
 @export_group("HitBox")
 @export var hit_box_shape: BoxShape3D
 @export var hit_box_position: Vector3 = Vector3(0.5, 1, 0)
+
+@export_group("SFX")
+@export_file("*.wav") var hit_sound: String = ""

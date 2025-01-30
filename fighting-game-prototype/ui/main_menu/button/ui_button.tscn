@@ -7,5 +7,6 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Button"
 script = ExtResource("1_0icm5")
+click_sound = "res://assets/audio/sfx/button_sound.wav"
 
 [connection signal="pressed" from="." to="." method="_button_pressed"]

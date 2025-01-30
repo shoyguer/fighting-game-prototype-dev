@@ -55,7 +55,7 @@ enum {
 @export var sprint_state: BaseState
 @export var punch_state: BaseState
 @export var kick_state: BaseState
-@export var hit_state: BaseState
+@export var hurt_state: BaseState
 @export var death_state: BaseState
 @export var starting_state: BaseState
 

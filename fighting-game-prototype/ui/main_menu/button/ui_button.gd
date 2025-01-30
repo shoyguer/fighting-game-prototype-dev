@@ -28,6 +28,8 @@ enum ButtonType {
 		return scene_to_load
 @export var scene_path_to_load: String
 
+@export_file("*.wav") var click_sound: String
+
 
 func _ready() -> void:
 	scene_to_load = scene_to_load
@@ -35,3 +37,4 @@ func _ready() -> void:
 
 func _button_pressed() -> void:
 	button_got_pressed.emit(self)
+	AudioManager.play_sfx(click_sound, -15)

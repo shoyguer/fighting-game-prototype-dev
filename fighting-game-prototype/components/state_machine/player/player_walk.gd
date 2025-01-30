@@ -2,13 +2,6 @@ class_name PlayerStateWalk
 extends BaseState
 
 
-@export var idle_state: BaseState
-@export var crouch_state: BaseState
-@export var jump_state: BaseState
-@export var sprint_state: BaseState
-@export var punch_state: BaseState
-@export var kick_state: BaseState
-@export var hit_state: BaseState
 var acceleration = 50
 var sprint_max_time: float = 0.2
 var sprint_cur_time: float = 0.0
@@ -26,13 +19,13 @@ func enter() -> void:
 
 func input(event: InputEvent) -> BaseState:
 	if event.is_action_pressed("action_punch"):
-		return punch_state
+		return context.punch_state
 	if event.is_action_pressed("action_kick"):
-		return kick_state
+		return context.kick_state
 	if event.is_action_pressed("less_health"):
-		return hit_state
+		return context.hurt_state
 	if event.is_action_pressed("move_crouch"):
-		return crouch_state
+		return context.crouch_state
 	
 	if (sprint_wait_time == false):
 		sprint_key = int(move_component.get_movement_released())
@@ -43,7 +36,7 @@ func input(event: InputEvent) -> BaseState:
 		sprint_wait_time = false
 
 	if (sprint_key != 0) and (sprint_key == move_component.get_movement_pressed()):
-		return sprint_state
+		return context.sprint_state
 	
 	elif (sprint_key != 0) and (move_component.get_movement_pressed() != 0) and (
 		sprint_key != move_component.get_movement_pressed()):
@@ -68,7 +61,7 @@ func physics_process(delta: float) -> BaseState:
 			sprint_cur_time += delta
 		
 		if wants_jump() and context.is_on_floor():
-			return jump_state
+			return context.jump_state
 		
 		context.velocity.y -= gravity * delta
 		
@@ -80,6 +73,6 @@ func physics_process(delta: float) -> BaseState:
 		context.move_and_slide()
 		
 		if (movement == 0) and (sprint_wait_time == false):
-			return idle_state
+			return context.idle_state
 	
 	return null
