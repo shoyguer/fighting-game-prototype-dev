@@ -43,6 +43,7 @@ size = Vector3(1, 3, 5)
 [node name="BaseRing" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_penw6")
+soundtrack = "res://assets/audio/soundtrack/test_music.mp3"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_csm8i")
@@ -222,3 +223,6 @@ text = "Enemy"
 
 [node name="PauseMenu" parent="." instance=ExtResource("9_iqah3")]
 visible = false
+
+[node name="Sounds" type="Node" parent="."]
+unique_name_in_owner = true

@@ -2,10 +2,6 @@ class_name PlayerStateSprint
 extends BaseState
 
 
-@export var idle_state: BaseState
-@export var jump_state: BaseState
-@export var walk_state: BaseState
-
 var acceleration = 50
 
 
@@ -20,7 +16,7 @@ func physics_process(delta: float) -> BaseState:
 		animation_tree.set_sprint_blend(current_input, 2.0)
 		
 		if wants_jump() and context.is_on_floor():
-			return jump_state
+			return context.jump_state
 		
 		context.velocity.y -= gravity * delta
 		
@@ -32,6 +28,6 @@ func physics_process(delta: float) -> BaseState:
 		context.move_and_slide()
 		
 		if movement == 0:
-			return idle_state
+			return context.idle_state
 	
 	return null

@@ -2,16 +2,12 @@ class_name PlayerStateCrouch
 extends BaseState
 
 
-@export var idle_state: BaseState
-@export var walk_state: BaseState
-@export var jump_state: BaseState
-@export var sprint_state: BaseState
 var acceleration = 50
 
 
 func input(event: InputEvent) -> BaseState:
 	if event.is_action_released("move_crouch"):
-		return walk_state
+		return context.walk_state
 	return null
 
 

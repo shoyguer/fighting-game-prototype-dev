@@ -8,3 +8,9 @@ script = ExtResource("2_14qbl")
 max_health = 1000
 portrait_image = ExtResource("1_qfspa")
 character_name = ""
+attacks = {
+"kicks": [],
+"punches": []
+}
+sfx_hurt_pool = Array[String](["res://assets/audio/sfx/hurt_0.wav", "res://assets/audio/sfx/hurt_1.wav", "res://assets/audio/sfx/hurt_2.wav", "res://assets/audio/sfx/hurt_3.wav"])
+sfX_death = "res://assets/audio/sfx/dying_female.wav"

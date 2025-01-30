@@ -23,3 +23,8 @@ func set_collision(current_attack: BaseAttack) -> void:
 
 func disable_collision(type: bool) -> void:
 	collision.disabled = type
+
+
+func _on_area_entered(area: Area3D) -> void:
+	if area.character != character:
+		AudioManager.play_sfx(attack.hit_sound)

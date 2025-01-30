@@ -2,11 +2,6 @@ class_name PlayerStateJump
 extends BaseState
 
 
-@export var idle_state: BaseState
-@export var walk_state: BaseState
-@export var hit_state: BaseState
-
-
 func enter() -> void:
 	super()
 	context.velocity.y = context.jump_velocity
@@ -15,7 +10,7 @@ func enter() -> void:
 
 func input(_event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("less_health"):
-		return hit_state
+		return context.hurt_state
 	return null
 
 
@@ -29,7 +24,7 @@ func physics_process(delta: float) -> BaseState:
 	
 	if context.is_on_floor():
 		if movement != 0:
-			return walk_state
-		return idle_state
+			return context.walk_state
+		return context.idle_state
 	
 	return null

@@ -18,6 +18,9 @@ extends Node3D
 	get:
 		return characters_distance
 
+@export_group("Soundtrack")
+@export_file("*.mp3") var soundtrack: String = ""
+
 @export_group("Environment")
 @export var wall_size: Vector3 = Vector3(1, 3, 5):
 	set(value):
@@ -78,6 +81,7 @@ var paused: bool = false
 @onready var wall_right_collision: CollisionShape3D = %WallRightCollision
 
 @onready var camera: Camera3D = %Camera
+@onready var sounds: Node = %Sounds
 
 
 func _ready() -> void:
@@ -89,6 +93,8 @@ func _ready() -> void:
 	
 	if not Engine.is_editor_hint():
 		pause_menu_HUD.init(self)
+		
+		AudioManager.play_soundtrack(soundtrack, -30, sounds)
 
 
 func _process(_delta: float) -> void:

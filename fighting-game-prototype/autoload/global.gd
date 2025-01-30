@@ -4,7 +4,7 @@ extends Node
 var game_version: Dictionary = {
 	"major": "0",
 	"minor": "00",
-	"build": "04",
+	"build": "06",
 	"label": "pre-alpha"}
 
 

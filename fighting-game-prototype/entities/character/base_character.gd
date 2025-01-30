@@ -55,7 +55,7 @@ enum {
 @export var sprint_state: BaseState
 @export var punch_state: BaseState
 @export var kick_state: BaseState
-@export var hit_state: BaseState
+@export var hurt_state: BaseState
 @export var death_state: BaseState
 @export var starting_state: BaseState
 
@@ -123,7 +123,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if "Punch_0" in anim_name:
+	if "Punch_2" in anim_name:
 		is_punching = false
 	if "Kick" in anim_name:
 		is_kicking = false

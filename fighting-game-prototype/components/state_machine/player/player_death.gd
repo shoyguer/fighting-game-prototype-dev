@@ -2,20 +2,13 @@ class_name PlayerStateDeath
 extends BaseState
 
 
-@export var idle_state: BaseState
-@export var walk_state: BaseState
-@export var jump_state: BaseState
-@export var crouch_state: BaseState
-@export var punch_state: BaseState
-@export var kick_state: BaseState
-
-
 func enter() -> void:
 	super()
 	context.is_dead = true
 	context.velocity.x = 0
 	animation_tree.set_movement_transition("Death")
 	context.collision.set_deferred("disabled", true)
+	AudioManager.play_sfx(context.character_data.sfX_death)
 
 
 func physics_process(_delta: float) -> BaseState:

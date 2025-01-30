@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneLoader="*res://ui/scene_loader/scene_loader.tscn"
 Global="*res://autoload/global.gd"
+AudioManager="*res://autoload/audio_manager.gd"
 
 [input]
 

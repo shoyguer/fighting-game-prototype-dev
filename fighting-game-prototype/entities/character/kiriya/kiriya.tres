@@ -14,3 +14,5 @@ attacks = {
 "kicks": [ExtResource("4_py47s")],
 "punches": [ExtResource("1_kjgcl"), ExtResource("2_vgcec"), ExtResource("3_xf61j")]
 }
+sfx_hurt_pool = Array[String](["res://assets/audio/sfx/hurt_0.wav", "res://assets/audio/sfx/hurt_1.wav", "res://assets/audio/sfx/hurt_2.wav", "res://assets/audio/sfx/hurt_3.wav"])
+sfX_death = "res://assets/audio/sfx/dying_female.wav"
