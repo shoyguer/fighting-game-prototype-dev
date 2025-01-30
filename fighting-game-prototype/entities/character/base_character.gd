@@ -47,6 +47,9 @@ enum {
 @export var is_player: bool = false
 @export var enemy: BaseCharacter
 
+@export var blood_particles: PackedScene = null
+@export var impact_particle: PackedScene = null
+
 @export_group("States")
 @export var jump_state: BaseState
 @export var idle_state: BaseState

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c67vbh3ht7kru"]
+
+[ext_resource type="Texture2D" uid="uid://bgm3xnghrm2dt" path="res://assets/particles/drop.png" id="1_mgd04"]
+[ext_resource type="Script" path="res://scenes/particles/particles.gd" id="2_yqao4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euaji"]
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.784314)
+albedo_texture = ExtResource("1_mgd04")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_intd0"]
+material = SubResource("StandardMaterial3D_euaji")
+size = Vector2(0.04, 0.04)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_vvun2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.759375, 0.645161), -1.54839, -1.54839, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="BloodParticles" type="CPUParticles3D"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+emitting = false
+amount = 24
+lifetime = 0.95
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.2
+local_coords = true
+mesh = SubResource("PlaneMesh_intd0")
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, -2.5, 0)
+radial_accel_max = 0.6
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_vvun2")
+script = ExtResource("2_yqao4")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

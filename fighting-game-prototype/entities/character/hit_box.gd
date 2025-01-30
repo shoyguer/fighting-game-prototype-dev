@@ -26,5 +26,8 @@ func disable_collision(type: bool) -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-	if area.character != character:
+	if (
+		area.character != character
+		and not character.is_dead
+	):
 		AudioManager.play_sfx(attack.hit_sound)

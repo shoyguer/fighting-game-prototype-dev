@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://g48xacnegqpn"]
+
+[ext_resource type="Texture2D" uid="uid://vogksac1nm21" path="res://assets/particles/impact.png" id="1_1565i"]
+[ext_resource type="Script" path="res://scenes/particles/particles.gd" id="2_7kg17"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwf7w"]
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.752941)
+albedo_texture = ExtResource("1_1565i")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ib5r4"]
+material = SubResource("StandardMaterial3D_qwf7w")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_hocmr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246875, 1), 0.0, 0.0, 0, 0, Vector2(0.496875, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="ImpactParticle" type="CPUParticles3D"]
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+mesh = SubResource("QuadMesh_ib5r4")
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_hocmr")
+script = ExtResource("2_7kg17")

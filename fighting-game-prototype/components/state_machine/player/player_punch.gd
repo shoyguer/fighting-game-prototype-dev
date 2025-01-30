@@ -2,6 +2,11 @@ class_name PlayerStatePunch
 extends BaseStateAttack
 
 
+func _ready() -> void:
+	attack_prefix = "Punch"
+	super()
+
+
 func enter() -> void:
 	super()
 	combo = context.character_data.attacks.punches
