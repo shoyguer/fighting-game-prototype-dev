@@ -6,6 +6,7 @@ var combo: Array = []
 var can_combo: bool = false
 var current_attack: BaseAttack = null
 var attack_index: int = 0
+var attack_prefix: String
 
 @onready var timer: Timer = $Timer
 
@@ -63,7 +64,9 @@ func _timer_timeout() -> void:
 
 
 func _animation_finished(anim_name: StringName) -> void:
-	if anim_name != current_attack.animation_name:
-		play_attack()
-	else:
-		context.state_manager.change_state(context.idle_state)
+	if anim_name.begins_with(attack_prefix):
+		
+		if anim_name != current_attack.animation_name:
+			play_attack()
+		else:
+			context.state_manager.change_state(context.idle_state)

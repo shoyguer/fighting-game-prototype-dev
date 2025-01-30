@@ -8,7 +8,7 @@
 script = ExtResource("1_0btfj")
 animation_name = "Kick_0"
 damage = 100
-animation_time = 0.6
+animation_time = 0.5
 hit_box_shape = SubResource("BoxShape3D_uvky0")
 hit_box_position = Vector3(1.1, 1, 0)
 hit_sound = "res://assets/audio/sfx/kick_0.wav"

@@ -7,7 +7,7 @@ func enter() -> void:
 	context.is_hit = true
 	context.velocity.x = 0
 	animation_tree.set_movement_transition("Hit")
-	AudioManager.play_random_sfx(context.character_data.sfx_hurt_pool)
+	AudioManager.play_random_sfx(context.character_data.sfx_hurt_pool, -12)
 	
 	if not context.animation_tree.animation_finished.is_connected(_animation_finished):
 		context.animation_tree.animation_finished.connect(_animation_finished)
