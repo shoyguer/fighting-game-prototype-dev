@@ -4,7 +4,8 @@ extends Control
 
 enum State {
 	PRE_MENU,
-	MAIN_MENU
+	MAIN_MENU,
+	MENU_GAME_MODE
 }
 
 enum Fade {
@@ -18,11 +19,13 @@ var current_container: VBoxContainer
 
 @onready var pre_menu: VBoxContainer = %PreMenu
 @onready var main_menu: VBoxContainer = %MainMenu
+@onready var menu_game_mode: VBoxContainer = %MenuGameMode
 @onready var game_version_label: Label = %GameVersionLabel
 
 
 func _ready() -> void:
 	main_menu.modulate.a = 0
+	menu_game_mode.modulate.a = 0
 	current_container = pre_menu
 	
 	# Connects all the main_menu buttons button_got_pressed signals.
@@ -63,6 +66,15 @@ func _menu_state_manager(new_state: State) -> void:
 			
 			# Sets new VBoxContainer then shows it.
 			current_container = main_menu
+			await _fade_container(current_container, Fade.IN)
+		State.MENU_GAME_MODE:
+			await _fade_container(current_container, Fade.OUT)
+			
+			# Little timer
+			await get_tree().create_timer(0.25).timeout
+			
+			# Sets new VBoxContainer then shows it.
+			current_container = menu_game_mode
 			await _fade_container(current_container, Fade.IN)
 
 

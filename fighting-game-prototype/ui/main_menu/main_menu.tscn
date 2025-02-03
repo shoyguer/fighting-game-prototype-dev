@@ -78,7 +78,6 @@ alignment = 1
 layout_mode = 2
 text = "New Game"
 button_type = 1
-scene_path_to_load = "res://scenes/ring/base_ring.tscn"
 
 [node name="ButtonSettings" parent="MarginContainer/VBoxContainer/MainMenu" instance=ExtResource("2_spj15")]
 layout_mode = 2
@@ -89,3 +88,21 @@ button_type = 3
 layout_mode = 2
 text = "Quit Game"
 button_type = 6
+
+[node name="MenuGameMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ButtonSinglePlayer" parent="MarginContainer/VBoxContainer/MenuGameMode" instance=ExtResource("2_spj15")]
+layout_mode = 2
+text = "SinglePlayer
+"
+button_type = 7
+scene_path_to_load = "res://scenes/ring/base_ring.tscn"
+
+[node name="ButtonMultiplayer" parent="MarginContainer/VBoxContainer/MenuGameMode" instance=ExtResource("2_spj15")]
+layout_mode = 2
+text = "Multiplayer"
+button_type = 8
