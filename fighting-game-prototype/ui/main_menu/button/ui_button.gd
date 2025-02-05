@@ -14,7 +14,9 @@ enum ButtonType {
 	QUIT_MENU,
 	QUIT_GAME,
 	SINGLEPLAYER,
-	MULTIPLAYER
+	MULTIPLAYER,
+	NA,
+	SA
 }
 
 @export var button_type: ButtonType

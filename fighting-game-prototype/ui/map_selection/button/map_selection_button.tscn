@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://op5rgc4k0o0w"]
+
+[ext_resource type="Texture2D" uid="uid://dtw7bdmx1c0jp" path="res://assets/textures/maps/city_map.jpg" id="1_xykld"]
+[ext_resource type="Script" path="res://ui/map_selection/button/map_selection_button.gd" id="2_gmydo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5cki"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(250, 380)
+size_flags_vertical = 4
+texture_normal = ExtResource("1_xykld")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_gmydo")
+
+[node name="SelectedContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5cki")

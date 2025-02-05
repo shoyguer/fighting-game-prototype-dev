@@ -70,6 +70,7 @@ var is_punching: bool = false
 var is_kicking: bool = false
 var is_hit: bool = false
 var is_dead: bool = false
+var in_battle: bool = true
 
 @onready var mesh_root: Node3D = %MeshRoot
 @onready var collision: CollisionShape3D = %Collision
@@ -84,7 +85,7 @@ var is_dead: bool = false
 
 func _ready() -> void:
 	# If not in editor, state manager and move component will be initialized
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() and in_battle:
 		hit_box.init(self)
 		hurt_box.init(self)
 	
@@ -97,12 +98,12 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if cur_health_points <= 0:
+	if cur_health_points <= 0 and in_battle:
 		is_dead = true
 
 
 func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() and in_battle:
 		state_manager.physics_process(delta)
 		
 		if global_position.z != 0:
@@ -121,6 +122,7 @@ func _input(event: InputEvent) -> void:
 	if (
 		not Engine.is_editor_hint()
 		and is_player
+		and in_battle
 	):
 		state_manager.input(event)
 
