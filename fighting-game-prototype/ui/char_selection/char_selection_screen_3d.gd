@@ -1,12 +1,14 @@
+class_name CharSelection
 extends Node3D
+
 
 @onready var base_character: BaseCharacter = $BaseCharacter
 @onready var ui: Control = $UI
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_character.in_battle = false
+
 
 func _input(event: InputEvent) -> void:
 	if ui.current_index == 0:
@@ -15,7 +17,3 @@ func _input(event: InputEvent) -> void:
 			pass
 	else:
 		base_character.hide()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

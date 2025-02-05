@@ -10,7 +10,7 @@ var current_index : int = 0
 
 @onready var h_box_container: HBoxContainer = $VBoxContainer/HBoxContainer
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	for button in h_box_container.get_children():
 		buttons.append(button)

@@ -1,3 +1,4 @@
+class_name CharSelectionUI
 extends Control
 
 
@@ -7,12 +8,11 @@ var buttons: Array = []
 var current_button
 var current_index : int = 0
 
-
 @onready var char_name: Label = $HBoxContainer2/CharName
 
 @onready var grid_container: GridContainer = $HBoxContainer/GridContainer
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	for button in grid_container.get_children():
 		buttons.append(button)
@@ -22,15 +22,16 @@ func _ready() -> void:
 	
 	name_selection()
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_left"):
-		move_selection(Vector2(-1, 0))  # Mover para a esquerda
+		move_selection(Vector2(-1, 0))  # Moves to the left
 	elif event.is_action_pressed("move_right"):
-		move_selection(Vector2(1, 0))  # Mover para a direita
+		move_selection(Vector2(1, 0))  # Moves to the right
 	elif event.is_action_pressed("move_jump"):
-		move_selection(Vector2(0, -1))  # Mover para cima
+		move_selection(Vector2(0, -1))  # Moves up
 	elif event.is_action_pressed("move_crouch"):
-		move_selection(Vector2(0, 1))  # Mover para baixo
+		move_selection(Vector2(0, 1))  # Moves down
 	
 	if event.is_action_pressed("enter") and current_index == 0:
 		SceneLoader.load_scene(map_path)
@@ -43,10 +44,10 @@ func move_selection(direction: Vector2):
 	new_index = clamp(new_index, 0, buttons.size() - 1)
 	
 	if new_index != current_index:
-		current_button.selected = false  # Desmarcar o botão atual
-		current_button = buttons[new_index]  # Atualizar o botão selecionado
-		current_button.selected = true  # Marcar o novo botão
-		current_index = new_index  # Atualizar o índice atual
+		current_button.selected = false  # Unselects current button
+		current_button = buttons[new_index]  # Updates current button
+		current_button.selected = true  # Selects current button
+		current_index = new_index  # Updates index
 
 
 func name_selection():

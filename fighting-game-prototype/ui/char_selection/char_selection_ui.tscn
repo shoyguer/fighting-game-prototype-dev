@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvioh6n6y13vw"]
 
-[ext_resource type="Script" path="res://ui/char_selection/selection.gd" id="1_kiqrt"]
+[ext_resource type="Script" path="res://ui/char_selection/char_selection_ui.gd" id="1_kiqrt"]
 [ext_resource type="Texture2D" uid="uid://boytioa66vyk6" path="res://ui/hud_control/portrait/placeholder.png" id="1_sx61d"]
 [ext_resource type="PackedScene" uid="uid://c07objbgxna8" path="res://ui/char_selection/char_selection_button/char_selection_button.tscn" id="2_w12l5"]
 

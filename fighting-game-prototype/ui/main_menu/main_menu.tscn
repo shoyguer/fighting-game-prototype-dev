@@ -100,7 +100,7 @@ layout_mode = 2
 text = "SinglePlayer
 "
 button_type = 7
-scene_path_to_load = "res://ui/char_selection/selection_screen_3d.tscn"
+scene_path_to_load = "res://ui/char_selection/char_selection_screen_3d.tscn"
 
 [node name="ButtonMultiplayer" parent="MarginContainer/VBoxContainer/MenuGameMode" instance=ExtResource("2_spj15")]
 layout_mode = 2
@@ -123,10 +123,10 @@ vertical_alignment = 1
 layout_mode = 2
 text = "NA"
 button_type = 9
-scene_path_to_load = "res://ui/char_selection/selection_screen_3d.tscn"
+scene_path_to_load = "res://ui/char_selection/char_selection_screen_3d.tscn"
 
 [node name="ButtonMultiplayer" parent="MarginContainer/VBoxContainer/ServerMode" instance=ExtResource("2_spj15")]
 layout_mode = 2
 text = "SA"
 button_type = 10
-scene_path_to_load = "res://ui/char_selection/selection_screen_3d.tscn"
+scene_path_to_load = "res://ui/char_selection/char_selection_screen_3d.tscn"

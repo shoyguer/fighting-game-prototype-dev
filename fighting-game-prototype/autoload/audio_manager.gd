@@ -16,6 +16,8 @@ func play_sfx(sfx: String, db: float = 0, scene_to_add: Node = null) -> void:
 	player.stream = load(sfx)
 	player.volume_db = db
 	
+	player.bus = &"SFX"
+	
 	player.play()
 
 
@@ -37,6 +39,8 @@ func play_random_sfx(sfxs: Array[String], db: float = 0, scene_to_add: Node = nu
 	player.stream = load(sfx)
 	player.volume_db = db
 	
+	player.bus = &"SFX"
+	
 	player.play()
 
 
@@ -50,5 +54,7 @@ func play_soundtrack(soundtrack: String, db: float = 0, scene_to_add: Node = nul
 	
 	player.stream = load(soundtrack)
 	player.volume_db = db
+	
+	player.bus = &"Soundtrack"
 	
 	player.play()
