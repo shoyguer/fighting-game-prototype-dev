@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvioh6n6y13vw"]
+
+[ext_resource type="Script" path="res://ui/char_selection/char_selection_ui.gd" id="1_kiqrt"]
+[ext_resource type="Texture2D" uid="uid://boytioa66vyk6" path="res://ui/hud_control/portrait/placeholder.png" id="1_sx61d"]
+[ext_resource type="PackedScene" uid="uid://c07objbgxna8" path="res://ui/char_selection/char_selection_button/char_selection_button.tscn" id="2_w12l5"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kiqrt")
+map_path = "res://ui/map_selection/map_selection.tscn"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -134.0
+offset_right = 100.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Button" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+
+[node name="Button2" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button3" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button4" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button5" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button6" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button7" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button8" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button9" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button10" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button11" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="Button12" parent="HBoxContainer/GridContainer" instance=ExtResource("2_w12l5")]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_sx61d")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CharName" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+horizontal_alignment = 1

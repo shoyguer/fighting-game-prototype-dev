@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtmcpk63wtfbr"]
+
+[ext_resource type="Script" path="res://ui/map_selection/map_selection.gd" id="1_j2vfm"]
+[ext_resource type="PackedScene" uid="uid://op5rgc4k0o0w" path="res://ui/map_selection/button/map_selection_button.tscn" id="2_38u1a"]
+[ext_resource type="Texture2D" uid="uid://q6jvy21o0agw" path="res://assets/textures/maps/field_map.jpg" id="2_sn1yl"]
+[ext_resource type="Texture2D" uid="uid://dooxhgx06w57a" path="res://assets/textures/maps/japan_map.jpg" id="3_wms54"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2vfm")
+game_path = "res://scenes/ring/base_ring.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 38
+text = "MAP SELECTION"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_38u1a")]
+layout_mode = 2
+
+[node name="TextureButton2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_38u1a")]
+layout_mode = 2
+texture_normal = ExtResource("2_sn1yl")
+stretch_mode = 0
+
+[node name="TextureButton3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_38u1a")]
+layout_mode = 2
+texture_normal = ExtResource("3_wms54")
+stretch_mode = 0

@@ -4,7 +4,9 @@ extends Control
 
 enum State {
 	PRE_MENU,
-	MAIN_MENU
+	MAIN_MENU,
+	MENU_GAME_MODE,
+	SERVER_MODE
 }
 
 enum Fade {
@@ -18,17 +20,29 @@ var current_container: VBoxContainer
 
 @onready var pre_menu: VBoxContainer = %PreMenu
 @onready var main_menu: VBoxContainer = %MainMenu
+@onready var menu_game_mode: VBoxContainer = %MenuGameMode
+@onready var server_mode: VBoxContainer = %ServerMode
 @onready var game_version_label: Label = %GameVersionLabel
 
 
 func _ready() -> void:
 	main_menu.modulate.a = 0
+	main_menu.hide()
+	menu_game_mode.modulate.a = 0
+	menu_game_mode.hide()
+	server_mode.modulate.a = 0
+	server_mode.hide()
 	current_container = pre_menu
 	
 	# Connects all the main_menu buttons button_got_pressed signals.
 	for button: UIButton in main_menu.get_children():
 		button.button_got_pressed.connect(_menu_button_pressed)
-	
+	for button: UIButton in menu_game_mode.get_children():
+		button.button_got_pressed.connect(_menu_button_pressed)
+	for button in server_mode.get_children():
+		if button is UIButton:
+			button.button_got_pressed.connect(_menu_button_pressed)
+		
 	#region Set Game Version
 	var game_version_label_text: String = "ver.: "
 	
@@ -52,6 +66,7 @@ func _input(event: InputEvent) -> void:
 
 func _menu_state_manager(new_state: State) -> void:
 	current_state = new_state
+	print(current_state)
 	
 	match new_state:
 		State.MAIN_MENU:
@@ -64,6 +79,24 @@ func _menu_state_manager(new_state: State) -> void:
 			# Sets new VBoxContainer then shows it.
 			current_container = main_menu
 			await _fade_container(current_container, Fade.IN)
+		State.MENU_GAME_MODE:
+			await _fade_container(current_container, Fade.OUT)
+			
+			# Little timer
+			await get_tree().create_timer(0.25).timeout
+			
+			# Sets new VBoxContainer then shows it.
+			current_container = menu_game_mode
+			await _fade_container(current_container, Fade.IN)
+		State.SERVER_MODE:
+			await _fade_container(current_container, Fade.OUT)
+			
+			# Little timer
+			await get_tree().create_timer(0.25).timeout
+			
+			# Sets new VBoxContainer then shows it.
+			current_container = server_mode
+			await _fade_container(current_container, Fade.IN)
 
 
 func _menu_button_pressed(button: UIButton) -> void:
@@ -71,6 +104,12 @@ func _menu_button_pressed(button: UIButton) -> void:
 		
 		button.ButtonType.QUIT_GAME:
 			get_tree().quit()
+		
+		button.ButtonType.NEW_GAME:
+			_menu_state_manager(State.MENU_GAME_MODE)
+		
+		button.ButtonType.MULTIPLAYER:
+			_menu_state_manager(State.SERVER_MODE)
 		
 		_:
 			if button.scene_path_to_load != "":
